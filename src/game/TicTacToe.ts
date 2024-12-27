@@ -1,6 +1,7 @@
 import { INVALID_MOVE } from 'boardgame.io/core';
+import type { Game } from 'boardgame.io'
 
-export const TicTacToe = {
+export const TicTacToe: Game = {
   setup: () => ({ cells: Array(9).fill(null) }),
 
   turn: {
