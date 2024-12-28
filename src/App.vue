@@ -65,10 +65,10 @@ function toTranslate(size: number, vector: AxialVector): string {
 
     <!-- Gradient for the hole -->
     <defs>
-      <radialGradient id="holeGradient" cx="0.3" cy="0.3" r="0.7">
+      <radialGradient id="holeGradient" cx="0.3" cy="0.3" r="0.9">
         <stop offset="0%" stop-color="#a76c34" />
         <stop offset="50%" stop-color="#c19a6b" />
-        <stop offset="100%" stop-color="#e8c17d" />
+        <stop offset="100%" stop-color="#e3b25f" />
       </radialGradient>
     </defs>
 
