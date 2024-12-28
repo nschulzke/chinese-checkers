@@ -1,7 +1,11 @@
 import { INVALID_MOVE } from 'boardgame.io/core';
 import type { Game } from 'boardgame.io'
 
-export const TicTacToe: Game = {
+export interface G {
+  cells: (string | null)[];
+}
+
+export const TicTacToe: Game<G> = {
   setup: () => ({ cells: Array(9).fill(null) }),
 
   turn: {
@@ -29,13 +33,13 @@ export const TicTacToe: Game = {
 };
 
 // Return true if `cells` is in a winning configuration.
-function IsVictory(cells) {
+function IsVictory(cells: G['cells']) {
   const positions = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6],
     [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
   ];
 
-  const isRowComplete = row => {
+  const isRowComplete = (row: number[]) => {
     const symbols = row.map(i => cells[i]);
     return symbols.every(i => i !== null && i === symbols[0]);
   };
@@ -44,6 +48,6 @@ function IsVictory(cells) {
 }
 
 // Return true if all `cells` are occupied.
-function IsDraw(cells) {
+function IsDraw(cells: G['cells']) {
   return cells.filter(c => c === null).length === 0;
 }
