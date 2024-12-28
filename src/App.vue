@@ -30,7 +30,10 @@ function toTranslate(size: number, vector: AxialVector): string {
 </script>
 
 <template>
-  <svg class="grid" viewBox="-1300 -1300 2600 2600">
+  <svg class="grid" viewBox="-1400 -1400 2800 2800">
+    <circle cx="0" cy="0" r="1400" fill="#ba8f5a" />
+    <circle cx="0" cy="0" r="1300" fill="#c19a6b" />
+
     <g
       v-for="{ vector, cell } in grid.allCells()"
       key="`${vector.q},${vector.r}`"
@@ -95,7 +98,6 @@ function toTranslate(size: number, vector: AxialVector): string {
 .grid {
   width: 750px;
   height: 750px;
-  background-color: #c19a6b;
 }
 
 .cell {
