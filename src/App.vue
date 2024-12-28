@@ -47,15 +47,6 @@ function toTranslate(size: number, vector: AxialVector): string {
             :fill="`url(#gradient-${cell.player})`"
             filter="url(#shadowFilter)"
           />
-
-          <!-- Gradient for 3D effect -->
-          <defs>
-            <radialGradient :id="`gradient-${cell.player}`" cx="0.3" cy="0.3" r="0.7">
-              <stop offset="0%" :stop-color="Players[cell.player].color.stop0" />
-              <stop offset="50%" :stop-color="Players[cell.player].color.stop1" />
-              <stop offset="100%" :stop-color="Players[cell.player].color.stop2" />
-            </radialGradient>
-          </defs>
         </g>
         <g v-else>
           <!-- Hole -->
@@ -72,10 +63,20 @@ function toTranslate(size: number, vector: AxialVector): string {
         </g>
       </g>
     </g>
+
     <!-- Shadow filter -->
     <filter id="shadowFilter" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="5" dy="5" stdDeviation="5" flood-color="rgba(0, 0, 0, 0.5)" />
     </filter>
+
+    <!-- Gradient for 3D effect -->
+    <defs v-for="(player, key) of Players">
+      <radialGradient :id="`gradient-${key}`" cx="0.3" cy="0.3" r="0.7">
+        <stop offset="0%" :stop-color="player.color.stop0" />
+        <stop offset="50%" :stop-color="player.color.stop1" />
+        <stop offset="100%" :stop-color="player.color.stop2" />
+      </radialGradient>
+    </defs>
   </svg>
 </template>
 
